@@ -19,7 +19,7 @@ select posts.*, users.username
     where first_name = 'Norene' and last_name = 'Schmitt';
 
 -- query 5
-select posts.*, users.username
+select users.username
   from users
     inner join posts on posts.users_id = users.id
       where posts.created_at > 'January 1, 2015';
