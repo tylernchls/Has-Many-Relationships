@@ -10,13 +10,13 @@ select *
 select first_name, last_name, posts.*
   from users
   inner join posts on posts.users_id = users.id
-      where users_id = 200;
+    where users_id = 200;
 
 -- query 4
 select posts.*, users.username
   from users
   inner join posts on posts.users_id = users.id
-      where first_name = 'Norene' and last_name = 'Schmitt';
+    where first_name = 'Norene' and last_name = 'Schmitt';
 
 -- query 5
 select posts.*, users.username
@@ -67,6 +67,7 @@ select users.first_name, users.last_name, comments.body as comment_body, posts.c
       inner join comments on comments.posts_id = posts.id
         where comments.body like '%SSL%' and posts.content like '%dolorum%';
 
+-- query 13
 select users.first_name as post_author_first_name,
   users.last_name as post_author_last_name,
   posts.title as post_title, users.username as comment_author_username,
