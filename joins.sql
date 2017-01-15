@@ -25,51 +25,55 @@ select users.username
       where posts.created_at > 'January 1, 2015';
 
 -- query 6
-select title, content, users.username
+select posts.title as post_title, posts.content as post_content,
+ users.username as user_username, users.created_at
   from users
     inner join posts on posts.users_id = users.id
       where users.created_at < 'January 1, 2015';
 
 -- query 7
 select comments.*, posts.title as post_title
-  from comments
-    inner join posts on comments.posts_id = posts.id;
+  from posts
+    inner join comments on comments.posts_id = posts.id;
 
--- query 8?
-select posts.title as post_title, posts.url as post_url , comments.body as comment_body
+-- query 8
+select posts.title as post_title, posts.url as post_url ,
+ posts.created_at as post_created_at, comments.body as comment_body
   from posts
     inner join comments on comments.posts_id = posts.id
       where posts.created_at < 'January 1, 2015';
 
 -- query 9
-select posts.title as post_title, posts.url as post_url , comments.body as comment_body
+select posts.title as post_title, posts.url as post_url,
+ posts.created_at as post_created_at, comments.body as comment_body
   from posts
     inner join comments on comments.posts_id = posts.id
       where posts.created_at > 'January 1, 2015';
 
 -- query 10
-select posts.title as post_title, posts.url as post_url , comments.body as comment_body
+select posts.title as post_title, posts.url as post_url, comments.body as comment_body
   from posts
     inner join comments on comments.posts_id = posts.id
       where comments.body like '%USB%';
 
 -- query 11
-select posts.title as post_title, users.first_name, users.last_name, comments.body as comment_body
+select posts.title as post_title, users.first_name as post_author_first_name,
+ users.last_name as post_author_last_name, comments.body as comment_body
   from users
     inner join posts on posts.users_id = users.id
       inner join comments on comments.posts_id = posts.id
         where comments.body like '%matrix%';
 
 -- query 12
-select users.first_name, users.last_name, comments.body as comment_body, posts.content
+select users.first_name as author_of_comment_first_name ,
+ users.last_name as author_of_comment_last_name, comments.body as comment_body, posts.content
   from users
     inner join posts on posts.users_id = users.id
       inner join comments on comments.posts_id = posts.id
         where comments.body like '%SSL%' and posts.content like '%dolorum%';
 
 -- query 13
-select users.first_name as post_author_first_name,
-  users.last_name as post_author_last_name,
+select users.first_name as post_author_first_name, users.last_name as post_author_last_name,
   posts.title as post_title, users.username as comment_author_username,
   comments.body as comment_body
     from users
