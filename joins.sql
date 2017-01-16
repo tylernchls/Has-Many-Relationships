@@ -81,3 +81,16 @@ select users.first_name as post_author_first_name, users.last_name as post_autho
       inner join comments on comments.posts_id = posts.id
         where (comments.body like '%SSL%' or comments.body like '%firewall%')
          and posts.content like '%nemo%';
+
+
+-- Additional queries
+
+select posts.content as post_content, posts.created_at as post_created_at, comments.body as comment_body
+  from posts
+    inner join comments on comments.posts_id = posts.id
+      where posts.created_at > 'July 14, 2015';
+
+select users.username, comments.body
+  from users
+    inner join comments on comments.users_id = users.id
+      where comments.body like '%programming%';
