@@ -21,7 +21,7 @@ create table users (
   last_name character varying(90),
   created_at timestamp not null default now(),
   updated_at timestamp not null default now()
-  );
+);
 
 create table posts (
   id serial not null primary key,
@@ -31,7 +31,7 @@ create table posts (
   created_at timestamp not null default now(),
   updated_at timestamp not null default now(),
   users_id integer references users(id) not null
-  );
+);
 
 create table comments (
   id serial not null primary key,
@@ -40,6 +40,6 @@ create table comments (
   updated_at timestamp not null default now(),
   users_id integer references users(id) not null,
   posts_id integer references posts(id) not null
-  );
+);
 
 \i scripts/blog_data.sql
